@@ -6,7 +6,6 @@
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 <div align="center">
-  <img src="public/game-hub-preview.png" alt="Mini Games Hub Preview" width="600">
   <p><em>⚡ 8款經典小遊戲，隨時開玩 ⚡</em></p>
 </div>
 
