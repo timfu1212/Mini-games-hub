@@ -34,25 +34,27 @@
 - **版本控制**：Git
 
 ## 📁 專案結構
+```bash
 mini-games-hub/
-├── public/ # 靜態資源
+├── public/                # 靜態資源
 ├── src/
-│ ├── games/ # 遊戲元件
-│ │ ├── Game2048.jsx
-│ │ ├── Gomoku.jsx
-│ │ ├── Memory.jsx
-│ │ ├── Reaction.jsx
-│ │ ├── Runner.jsx
-│ │ ├── Simon.jsx
-│ │ ├── Snake.jsx
-│ │ └── TicTacToe.jsx
-│ ├── App.jsx # 主應用
-│ ├── main.jsx # 進入點
-│ └── styles.css # 電競風格樣式
+│   ├── games/             # 遊戲元件
+│   │   ├── Game2048.jsx
+│   │   ├── Gomoku.jsx
+│   │   ├── Memory.jsx
+│   │   ├── Reaction.jsx
+│   │   ├── Runner.jsx
+│   │   ├── Simon.jsx
+│   │   ├── Snake.jsx
+│   │   └── TicTacToe.jsx
+│   ├── App.jsx            # 主應用
+│   ├── main.jsx           # 進入點
+│   └── styles.css         # 電競風格樣式
 ├── index.html
 ├── package.json
 ├── vite.config.js
 └── README.md
+```
 
 
 ## 🎮 遊戲列表
