@@ -8,7 +8,9 @@ import Reaction from "./games/Reaction";
 import TicTacToe from "./games/TicTacToe";
 import Simon from "./games/Simon";
 import Snake from "./games/Snake";
-
+import LightsOut from "./games/LightsOut";
+import DodgeGame from "./games/DodgeGame";
+import Breakout from "./games/Breakout";
 const GAMES = [
   {
     id: "runner",
@@ -65,6 +67,27 @@ const GAMES = [
     icon: "🐍",
     component: Snake,
     desc: "經典街機遊戲",
+  },
+  {
+    id: "lightsout",
+    name: "熄燈挑戰",
+    icon: "💡",
+    component: LightsOut,
+    desc: "點亮所有燈泡",
+  },
+  {
+    id: "dodgegame",
+    name: "躲避遊戲",
+    icon: "🏃‍♂️",
+    component: DodgeGame,
+    desc: "躲避障礙物，盡可能長時間生存",
+  },
+  {
+    id: "breakout",
+    name: "打磚塊",
+    icon: "🎮",
+    component: Breakout,
+    desc: "用球拍打碎所有磚塊",
   },
 ];
 
@@ -226,10 +249,6 @@ export default function App() {
   return (
     <>
       <BitRain />
-      {/* 移除這個空的 div ❌ */}
-      {/* <div style={{ minHeight: "100vh", padding: "3rem 1.5rem", position: "relative", zIndex: 2 }}></div> */}
-
-      {/* 保留這個主要的內容 div */}
       <div
         style={{
           minHeight: "100vh",
