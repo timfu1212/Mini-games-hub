@@ -1,0 +1,315 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  image-rendering: pixelated; /* 像素風渲染 */
+  image-rendering: crisp-edges;
+}
+
+body {
+  font-family:
+    "Press Start 2P",
+    /* 8-bit 字體 */ "Courier New",
+    monospace;
+  background: #0a0c14;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* 像素網格背景 */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 0, 255, 0.1) 1px, transparent 1px);
+  background-size: 32px 32px; /* 8-bit 風格的大網格 */
+  pointer-events: none;
+  z-index: 1;
+  animation: gridPulse 4s steps(4) infinite;
+}
+
+@keyframes gridPulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* RGB 光暈 - 滑鼠追蹤 */
+body::after {
+  content: "";
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 0, 255, 0.3) 0%,
+    rgba(0, 255, 255, 0.3) 50%,
+    transparent 70%
+  );
+  left: var(--mouse-x, -100px);
+  top: var(--mouse-y, -100px);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: screen;
+  filter: blur(20px);
+  animation: rgbPulse 2s steps(4) infinite;
+}
+
+@keyframes rgbPulse {
+  0%,
+  100% {
+    filter: blur(20px) hue-rotate(0deg);
+  }
+  50% {
+    filter: blur(30px) hue-rotate(90deg);
+  }
+}
+
+#root {
+  min-height: 100vh;
+  position: relative;
+  z-index: 2;
+  background: transparent; /* 確保背景透明 */
+}
+
+/* 8-bit 主標題 */
+h1 {
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: #00ffff;
+  text-shadow:
+    4px 4px 0 #ff00ff,
+    8px 8px 0 #ffff00;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+  animation: titleBounce 2s steps(4) infinite;
+  image-rendering: pixelated;
+}
+
+@keyframes titleBounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* 副標題 */
+p {
+  color: #ffffff;
+  text-shadow: 2px 2px 0 #00ffff;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+/* 遊戲卡片 - 8-bit 風格 */
+.game-card {
+  background: #1a1e2a !important;
+  border: 4px solid #00ffff !important;
+  image-rendering: pixelated;
+  position: relative;
+  transition: all 0.1s steps(4) !important;
+  box-shadow:
+    8px 8px 0 #ff00ff,
+    0 0 20px rgba(0, 255, 255, 0.3) !important;
+}
+
+.game-card::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  border: 2px solid #ffff00;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.1s steps(4);
+}
+
+.game-card:hover {
+  transform: translate(-4px, -4px) !important;
+  box-shadow:
+    12px 12px 0 #ff00ff,
+    0 0 40px #00ffff !important;
+}
+
+.game-card:hover::before {
+  opacity: 1;
+}
+
+/* 遊戲圖示 - 像素風 */
+.game-icon {
+  font-size: 4rem !important;
+  margin-bottom: 1rem !important;
+  display: inline-block;
+  filter: drop-shadow(4px 4px 0 #ff00ff);
+  transition: all 0.1s steps(4);
+  image-rendering: pixelated;
+}
+
+.game-card:hover .game-icon {
+  transform: scale(1.1);
+  filter: drop-shadow(8px 8px 0 #ff00ff);
+}
+
+/* 遊戲標題 */
+.game-card h3 {
+  color: #00ffff !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  margin-bottom: 0.75rem !important;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 0 #ff00ff;
+}
+
+/* 遊戲描述 */
+.game-card p {
+  color: #ffffff !important;
+  font-size: 10px !important;
+  line-height: 1.8 !important;
+  margin-bottom: 1rem !important;
+  text-shadow: none;
+}
+
+/* 最高分標籤 - 8-bit 風格 */
+.score-badge {
+  display: inline-block;
+  padding: 0.5rem 1rem !important;
+  background: #000000 !important;
+  border: 2px solid #ffff00 !important;
+  color: #ffff00 !important;
+  font-size: 10px !important;
+  font-weight: 400 !important;
+  text-shadow: none !important;
+  box-shadow: 4px 4px 0 #00ffff;
+  transition: all 0.1s steps(4);
+  image-rendering: pixelated;
+}
+
+.game-card:hover .score-badge {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #00ffff;
+}
+
+/* 返回按鈕 - 8-bit 風格 */
+.back-btn {
+  background: #000000 !important;
+  border: 4px solid #00ffff !important;
+  color: #00ffff !important;
+  font-size: 12px !important;
+  padding: 0.75rem 1.5rem !important;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 6px 6px 0 #ff00ff;
+  transition: all 0.1s steps(4);
+  image-rendering: pixelated;
+  font-family: "Press Start 2P", monospace !important;
+}
+
+.back-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 #ff00ff;
+  background: #00ffff !important;
+  color: #000000 !important;
+  border-color: #ff00ff !important;
+}
+
+/* 遊戲進行中的 header */
+.game-header {
+  background: #0a0c14 !important;
+  border-bottom: 4px solid #00ffff !important;
+  padding: 1rem 2rem !important;
+  box-shadow: 0 4px 0 #ff00ff;
+}
+
+/* 遊戲標題 */
+.game-title {
+  font-size: 1.5rem !important;
+  color: #00ffff !important;
+  text-shadow: 4px 4px 0 #ff00ff;
+  letter-spacing: 2px;
+}
+
+/* Footer - 8-bit 風格 */
+footer {
+  border-top: 4px solid #00ffff !important;
+  margin-top: 4rem !important;
+  padding: 2rem !important;
+  position: relative;
+  box-shadow: 0 -4px 0 #ff00ff;
+}
+
+footer p {
+  color: #ffffff;
+  font-size: 8px;
+  text-shadow: 2px 2px 0 #00ffff;
+}
+
+/* 位元滑落動畫容器 */
+.bit-rain {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* 位元方塊 */
+.bit {
+  position: absolute;
+  color: rgba(0, 255, 255, 0.15);
+  font-family: "Courier New", monospace;
+  font-size: 20px;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  animation: fall linear infinite;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+/* 滑落動畫 */
+@keyframes fall {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+/* 位元內容 - 二進位數字 */
+.bit-content {
+  display: inline-block;
+  animation: flicker 2s steps(2) infinite;
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
