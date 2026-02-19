@@ -3,5 +3,5 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
-  base: "/Mini-games-hub/", 
+  base: "/Mini-games-hub/",
 });
