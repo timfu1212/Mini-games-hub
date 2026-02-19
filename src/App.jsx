@@ -11,6 +11,7 @@ import Snake from "./games/Snake";
 import LightsOut from "./games/LightsOut";
 import DodgeGame from "./games/DodgeGame";
 import Breakout from "./games/Breakout";
+import RogueDungeon from "./games/RogueDungeon";  
 const GAMES = [
   {
     id: "runner",
@@ -88,6 +89,13 @@ const GAMES = [
     icon: "🎮",
     component: Breakout,
     desc: "用球拍打碎所有磚塊",
+  },
+  {
+    id: "roguedungeon",
+    name: "地下城",
+    icon: "🧝",
+    component: RogueDungeon,
+    desc: "地下城遊戲",
   },
 ];
 
